@@ -1,17 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using AutenticacaoNoAspNetMVC.Models;
+using AutenticacaoNoAspNetMVC.ViewModels;
 using System.Web.Mvc;
 
 namespace AutenticacaoNoAspNetMVC.Controllers
 {
     public class AutenticacaoController : Controller
     {
+        UsuariosContext ctx = new UsuariosContext();
+
         // GET: Autenticacao
         public ActionResult Cadastrar()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Cadastrar(CadastroUsuarioViewModel viewModel)
+        {
+            if (!ModelState.IsValid)
+                return View(viewModel);
+
+            Usuario novoUsuario = new Usuario
+            {
+                Nome = viewModel.Nome,
+                Login = viewModel.Login,
+                Senha = viewModel.Senha
+            };
+
+            ctx.Usuarios.Add(novoUsuario);
+            ctx.SaveChanges();
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }
