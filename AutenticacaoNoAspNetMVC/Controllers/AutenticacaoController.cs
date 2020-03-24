@@ -41,7 +41,8 @@ namespace AutenticacaoNoAspNetMVC.Controllers
             ctx.Usuarios.Add(novoUsuario);
             ctx.SaveChanges();
 
-            return RedirectToAction("Index", "Home");
+            TempData["Mensagem"] = "Cadastro realizado com sucesso. Efetue login.";
+            return RedirectToAction("Login");
         }
 
         public ActionResult Login(string ReturnUrl)

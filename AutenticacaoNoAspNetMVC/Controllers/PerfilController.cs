@@ -44,6 +44,8 @@ namespace AutenticacaoNoAspNetMVC.Controllers
             ctx.Entry(usuario).State = EntityState.Modified;
             ctx.SaveChanges();
 
+            TempData["Mensagem"] = "Senha alterada com sucesso";
+
             return RedirectToAction("Index", "Painel");
         }
     }
