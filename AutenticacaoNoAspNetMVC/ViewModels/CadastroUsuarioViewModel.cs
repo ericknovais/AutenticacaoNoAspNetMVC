@@ -17,7 +17,7 @@ namespace AutenticacaoNoAspNetMVC.ViewModels
         [MinLength(6, ErrorMessage = "A senha deve ter pelo menos 6 caracteres")]
         public string Senha { get; set; }
 
-        [Required(ErrorMessage = "Informe sua senha")]
+        [Required(ErrorMessage = "Confirme sua senha")]
         [DataType(DataType.Password)]
         [Display(Name = "Confirmar senha")]
         [MinLength(6, ErrorMessage = "A senha deve ter pelo menos 6 caracteres")]
