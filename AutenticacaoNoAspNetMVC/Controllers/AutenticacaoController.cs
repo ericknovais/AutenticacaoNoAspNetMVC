@@ -5,6 +5,7 @@ using AutenticacaoNoAspNetMVC.Utils;
 using System.Linq;
 using System.Security.Claims;
 using System.Web;
+using System;
 
 namespace AutenticacaoNoAspNetMVC.Controllers
 {
@@ -76,13 +77,19 @@ namespace AutenticacaoNoAspNetMVC.Controllers
             {
                 new Claim(ClaimTypes.Name, usuario.Nome),
                 new Claim("Login", usuario.Login),
-            }, "AplicationCookie");
+            }, "ApplicationCookie");
 
             Request.GetOwinContext().Authentication.SignIn(identity);
-            if (!string.IsNullOrWhiteSpace(viewModel.UrlRetorno) || Url.IsLocalUrl(viewModel.UrlRetorno))
+            if (!String.IsNullOrWhiteSpace(viewModel.UrlRetorno) || Url.IsLocalUrl(viewModel.UrlRetorno))
                 return Redirect(viewModel.UrlRetorno);
             else
                 return RedirectToAction("Index", "Painel");
+        }
+
+        public ActionResult Logout()
+        {
+            Request.GetOwinContext().Authentication.SignOut("ApplicationCookie");
+            return RedirectToAction("Index", "Home");
         }
     }
 }
