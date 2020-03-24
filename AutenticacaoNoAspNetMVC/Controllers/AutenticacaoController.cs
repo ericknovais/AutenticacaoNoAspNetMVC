@@ -1,6 +1,7 @@
 ﻿using AutenticacaoNoAspNetMVC.Models;
 using AutenticacaoNoAspNetMVC.ViewModels;
 using System.Web.Mvc;
+using AutenticacaoNoAspNetMVC.Utils;
 
 namespace AutenticacaoNoAspNetMVC.Controllers
 {
@@ -24,7 +25,7 @@ namespace AutenticacaoNoAspNetMVC.Controllers
             {
                 Nome = viewModel.Nome,
                 Login = viewModel.Login,
-                Senha = viewModel.Senha
+                Senha = Hash.GerarHash(viewModel.Senha)
             };
 
             ctx.Usuarios.Add(novoUsuario);
