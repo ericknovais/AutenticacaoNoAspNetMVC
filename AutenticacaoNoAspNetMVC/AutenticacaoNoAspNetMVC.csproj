@@ -142,6 +142,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Utils\Hash.cs" />
+    <Compile Include="ViewModels\AltararSenhaViewModel.cs" />
     <Compile Include="ViewModels\CadastroUsuarioViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
   </ItemGroup>
