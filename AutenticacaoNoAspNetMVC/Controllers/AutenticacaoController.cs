@@ -79,7 +79,7 @@ namespace AutenticacaoNoAspNetMVC.Controllers
             }, "AplicationCookie");
 
             Request.GetOwinContext().Authentication.SignIn(identity);
-            if (string.IsNullOrWhiteSpace(viewModel.UrlRetorno) || Url.IsLocalUrl(viewModel.UrlRetorno))
+            if (!string.IsNullOrWhiteSpace(viewModel.UrlRetorno) || Url.IsLocalUrl(viewModel.UrlRetorno))
                 return Redirect(viewModel.UrlRetorno);
             else
                 return RedirectToAction("Index", "Painel");

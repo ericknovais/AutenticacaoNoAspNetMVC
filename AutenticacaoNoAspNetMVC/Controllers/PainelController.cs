@@ -14,5 +14,12 @@ namespace AutenticacaoNoAspNetMVC.Controllers
         {
             return View();
         }
+
+        [Authorize]
+        // GET: Painel
+        public ActionResult Mensagens()
+        {
+            return View();
+        }
     }
 }
