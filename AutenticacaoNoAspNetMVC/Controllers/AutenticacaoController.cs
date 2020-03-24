@@ -3,6 +3,8 @@ using AutenticacaoNoAspNetMVC.ViewModels;
 using System.Web.Mvc;
 using AutenticacaoNoAspNetMVC.Utils;
 using System.Linq;
+using System.Security.Claims;
+using System.Web;
 
 namespace AutenticacaoNoAspNetMVC.Controllers
 {
@@ -48,6 +50,39 @@ namespace AutenticacaoNoAspNetMVC.Controllers
                 UrlRetorno = ReturnUrl
             };
             return View(viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Login(LoginViewModel viewModel)
+        {
+            if (!ModelState.IsValid)
+                return View(viewModel);
+
+            var usuario = ctx.Usuarios.FirstOrDefault(x => x.Login == viewModel.Login);
+
+            if (usuario == null)
+            {
+                ModelState.AddModelError("Login", "Login incorreto");
+                return View(viewModel);
+            }
+
+            if (usuario.Senha != Hash.GerarHash(viewModel.Senha))
+            {
+                ModelState.AddModelError("Senha", "Senha incorreta");
+                return View(viewModel);
+            }
+
+            var identity = new ClaimsIdentity(new[]
+            {
+                new Claim(ClaimTypes.Name, usuario.Nome),
+                new Claim("Login", usuario.Login),
+            }, "AplicationCookie");
+
+            Request.GetOwinContext().Authentication.SignIn(identity);
+            if (string.IsNullOrWhiteSpace(viewModel.UrlRetorno) || Url.IsLocalUrl(viewModel.UrlRetorno))
+                return Redirect(viewModel.UrlRetorno);
+            else
+                return RedirectToAction("Index", "Painel");
         }
     }
 }
