@@ -2,6 +2,7 @@
 using AutenticacaoNoAspNetMVC.ViewModels;
 using System.Web.Mvc;
 using AutenticacaoNoAspNetMVC.Utils;
+using System.Linq;
 
 namespace AutenticacaoNoAspNetMVC.Controllers
 {
@@ -20,6 +21,12 @@ namespace AutenticacaoNoAspNetMVC.Controllers
         {
             if (!ModelState.IsValid)
                 return View(viewModel);
+
+            if (ctx.Usuarios.Count(x => x.Login == viewModel.Login) > 0)
+            {
+                ModelState.AddModelError("Login", "Esse login já esta em uso");
+                return View(viewModel);
+            }
 
             Usuario novoUsuario = new Usuario
             {
