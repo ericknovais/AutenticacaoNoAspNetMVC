@@ -40,5 +40,14 @@ namespace AutenticacaoNoAspNetMVC.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+
+        public ActionResult Login(string ReturnUrl)
+        {
+            LoginViewModel viewModel = new LoginViewModel
+            {
+                UrlRetorno = ReturnUrl
+            };
+            return View(viewModel);
+        }
     }
 }
