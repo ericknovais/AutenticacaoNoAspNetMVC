@@ -6,7 +6,7 @@ using System.Web;
 
 namespace AutenticacaoNoAspNetMVC.ViewModels
 {
-    public class AltararSenhaViewModel
+    public class AlterarSenhaViewModel
     {
         [Required(ErrorMessage = "Informe sua senha atual")]
         [DataType(DataType.Password)]
