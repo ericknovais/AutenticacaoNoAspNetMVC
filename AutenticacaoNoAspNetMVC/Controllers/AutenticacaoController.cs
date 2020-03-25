@@ -79,7 +79,7 @@ namespace AutenticacaoNoAspNetMVC.Controllers
                 new Claim(ClaimTypes.Name, usuario.Nome),
                 new Claim("Login", usuario.Login),
             }, "ApplicationCookie");
-
+            
             Request.GetOwinContext().Authentication.SignIn(identity);
             if (!String.IsNullOrWhiteSpace(viewModel.UrlRetorno) || Url.IsLocalUrl(viewModel.UrlRetorno))
                 return Redirect(viewModel.UrlRetorno);
