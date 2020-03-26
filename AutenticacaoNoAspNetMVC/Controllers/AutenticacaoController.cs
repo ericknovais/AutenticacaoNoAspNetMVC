@@ -78,6 +78,7 @@ namespace AutenticacaoNoAspNetMVC.Controllers
             {
                 new Claim(ClaimTypes.Name, usuario.Nome),
                 new Claim("Login", usuario.Login),
+                new Claim(ClaimTypes.Role, usuario.Tipo.ToString())
             }, "ApplicationCookie");
             
             Request.GetOwinContext().Authentication.SignIn(identity);

@@ -19,5 +19,7 @@ namespace AutenticacaoNoAspNetMVC.Models
         [Required]
         [MaxLength(100)]
         public string Senha { get; set; }
+
+        public TipoUsuario Tipo { get; set; } = TipoUsuario.Padrao;
     }
 }

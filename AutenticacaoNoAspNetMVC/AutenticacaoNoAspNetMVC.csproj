@@ -138,6 +138,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003242021304_InitialCreate.cs" />
+    <Compile Include="Migrations\202003242021304_InitialCreate.designer.cs">
+      <DependentUpon>202003242021304_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003260109429_CriaTipoUsuario.cs" />
+    <Compile Include="Migrations\202003260109429_CriaTipoUsuario.designer.cs">
+      <DependentUpon>202003260109429_CriaTipoUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\TipoUsuario.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Models\UsuariosContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -170,6 +180,14 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202003242021304_InitialCreate.resx">
+      <DependentUpon>202003242021304_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003260109429_CriaTipoUsuario.resx">
+      <DependentUpon>202003260109429_CriaTipoUsuario.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
