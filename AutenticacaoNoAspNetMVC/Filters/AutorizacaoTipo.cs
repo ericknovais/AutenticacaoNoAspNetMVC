@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutenticacaoNoAspNetMVC.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +9,9 @@ namespace AutenticacaoNoAspNetMVC.Filters
 {
     public class AutorizacaoTipo : AuthorizeAttribute
     {
-        private AutorizacaoTipo[] tiposAutorizados;
+        private TipoUsuario[] tiposAutorizados;
 
-        public AutorizacaoTipo(AutorizacaoTipo[] tipoUsuariosAutorizados)
+        public AutorizacaoTipo(TipoUsuario[] tipoUsuariosAutorizados)
         {
             tiposAutorizados = tipoUsuariosAutorizados;
         }
