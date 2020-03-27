@@ -132,6 +132,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AutenticacaoController.cs" />
+    <Compile Include="Controllers\CadastroUsuarioController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PainelController.cs" />
     <Compile Include="Controllers\PerfilController.cs" />
@@ -171,6 +172,7 @@
     <Content Include="Views\Painel\Index.cshtml" />
     <Content Include="Views\Painel\Mensagens.cshtml" />
     <Content Include="Views\Perfil\AlterarSenha.cshtml" />
+    <Content Include="Views\CadastroUsuario\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
